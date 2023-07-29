@@ -1,0 +1,198 @@
+﻿<Window x:Class="ZoomDemoApplication.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ZoomDemoApplication"
+        mc:Ignorable="d"
+        Title="Zoom Demo Application" SizeToContent="WidthAndHeight"
+        ResizeMode="NoResize"
+        Loaded="Window_Loaded"
+        Background="#FF333333">
+    <Grid>
+
+
+        <StackPanel>
+            <StackPanel  Name="Controls" IsEnabled="False">
+
+                <StackPanel Orientation="Horizontal">
+
+                    <GroupBox x:Name="zoomGroupBox1" Header="Zoom Position 1" HorizontalAlignment="Left" Margin="46,5,0,0" VerticalAlignment="Top" Width="250" Height="100" Foreground="White" BorderThickness="1" >
+                        <StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="5">
+                                <StackPanel VerticalAlignment="Top">
+                                    <Slider x:Name="sliderZoom1" HorizontalAlignment="Left" Margin="0,6,0,0" VerticalAlignment="Top" Width="150" ValueChanged="sliderZoom1_ValueChanged"/>
+                                    <DockPanel >
+                                        <Label Name="zoomMinValue1" Margin="0,5,0,0" Width="50" Content="0" HorizontalContentAlignment="Left"/>
+                                        <Label Name="zoomMaxValue1" Margin="0,5,0,0" Content="000000" Width="50" HorizontalContentAlignment="Right" HorizontalAlignment="Right"></Label>
+                                    </DockPanel>
+                                </StackPanel>
+                                <TextBox Name="zoomTextBox1" Width="70" Height="20" Margin="5,5,5,0" Text="000000" PreviewTextInput="NumericTextBoxInput" VerticalAlignment="Top" LostFocus="zoomTextBox_LostFocus" KeyDown="zoomTextBox_KeyDown"></TextBox>
+                            </StackPanel>
+
+
+                        </StackPanel>
+
+                    </GroupBox>
+                    <Label Name="ActiveMarker1" VerticalAlignment="Center" Margin="10" FontSize="20" Visibility="Hidden" Foreground="White">&#x2605;</Label>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <GroupBox x:Name="zoomGroupBox2" Header="Zoom Position 2" HorizontalAlignment="Left" Margin="46,5,0,0" VerticalAlignment="Top" Width="250" Height="100" Foreground="White">
+            <StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="5">
+                    <StackPanel VerticalAlignment="Top">
+                        <Slider x:Name="sliderZoom2" HorizontalAlignment="Left" Margin="0,6,0,0" VerticalAlignment="Top" Width="150" ValueChanged="sliderZoom2_ValueChanged"/>
+                        <DockPanel >
+                            <Label Name="zoomMinValue2" Margin="0,5,0,0" Width="50" Content="0" HorizontalContentAlignment="Left"/>
+                            <Label Name="zoomMaxValue2" Margin="0,5,0,0" Content="000000" Width="50" HorizontalContentAlignment="Right" HorizontalAlignment="Right"></Label>
+                        </DockPanel>
+                    </StackPanel>
+                            <TextBox Name="zoomTextBox2" Width="70" Height="20" Margin="5,5,5,0" Text="000000" PreviewTextInput="NumericTextBoxInput" VerticalAlignment="Top" LostFocus="zoomTextBox_LostFocus" KeyDown="zoomTextBox_KeyDown"></TextBox>
+                </StackPanel>
+            </StackPanel>
+
+        </GroupBox>
+                    <Label Name="ActiveMarker2" VerticalAlignment="Center" Margin="10" FontSize="20" Visibility="Hidden" Foreground="White">&#x2605;</Label>
+        </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+
+                <CheckBox Margin="10" VerticalAlignment="Center" Name="checkBox3" Click="checkBox3_Click"></CheckBox>
+
+                    <GroupBox x:Name="zoomGroupBox3" Header="Zoom Position 3" HorizontalAlignment="Left" Margin="10,5,0,0" VerticalAlignment="Top" Width="250" Height="100" IsEnabled="False" Foreground="White">
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="5">
+                            <StackPanel VerticalAlignment="Top">
+                                <Slider x:Name="sliderZoom3" HorizontalAlignment="Left" Margin="0,6,0,0" VerticalAlignment="Top" Width="150"  ValueChanged="sliderZoom3_ValueChanged"/>
+                                <DockPanel >
+                                    <Label Name="zoomMinValue3" Margin="0,5,0,0" Width="50" Content="0" HorizontalContentAlignment="Left"/>
+                                    <Label Name="zoomMaxValue3" Margin="0,5,0,0" Content="000000" Width="50" HorizontalContentAlignment="Right" HorizontalAlignment="Right"></Label>
+                                </DockPanel>
+                            </StackPanel>
+                                <TextBox Name="zoomTextBox3" Width="70" Height="20" Margin="5,5,5,0" Text="000000" PreviewTextInput="NumericTextBoxInput" VerticalAlignment="Top" LostFocus="zoomTextBox_LostFocus" KeyDown="zoomTextBox_KeyDown"></TextBox>
+                        </StackPanel>
+                    </StackPanel>
+
+                </GroupBox>
+                    <Label Name="ActiveMarker3" VerticalAlignment="Center" Margin="10" FontSize="20" Visibility="Hidden" Foreground="White">&#x2605;</Label>
+
+                </StackPanel>
+
+
+            <StackPanel Orientation="Horizontal">
+
+                <CheckBox Margin="10" VerticalAlignment="Center" Name="checkBox4" Click="checkBox4_Click"></CheckBox>
+
+                    <GroupBox x:Name="zoomGroupBox4" Header="Zoom Position 4" HorizontalAlignment="Left" Margin="10,5,0,0" VerticalAlignment="Top" Width="250" Height="100"  IsEnabled="False" Foreground="White">
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="5">
+                            <StackPanel VerticalAlignment="Top">
+                                <Slider x:Name="sliderZoom4" HorizontalAlignment="Left" Margin="0,6,0,0" VerticalAlignment="Top" Width="150"  ValueChanged="sliderZoom4_ValueChanged"/>
+                                <DockPanel >
+                                    <Label Name="zoomMinValue4" Margin="0,5,0,0" Width="50" Content="0" HorizontalContentAlignment="Left"/>
+                                    <Label Name="zoomMaxValue4" Margin="0,5,0,0" Content="000000" Width="50" HorizontalContentAlignment="Right" HorizontalAlignment="Right"></Label>
+                                </DockPanel>
+                            </StackPanel>
+                                <TextBox Name="zoomTextBox4" Width="70" Height="20" Margin="5,5,5,0" Text="000000" PreviewTextInput="NumericTextBoxInput" VerticalAlignment="Top" LostFocus="zoomTextBox_LostFocus" KeyDown="zoomTextBox_KeyDown"></TextBox>
+                        </StackPanel>
+                    </StackPanel>
+
+                </GroupBox>
+
+                    <Label Name="ActiveMarker4" VerticalAlignment="Center" Margin="10" FontSize="20" Visibility="Hidden" Foreground="White">&#x2605;</Label>
+
+                </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+
+                <CheckBox Margin="10" VerticalAlignment="Center" Name="checkBox5" Click="checkBox5_Click"></CheckBox>
+
+                    <GroupBox x:Name="zoomGroupBox5" Header="Zoom Position 5" HorizontalAlignment="Left" Margin="10,5,0,0" VerticalAlignment="Top" Width="250" Height="100"  IsEnabled="False" Foreground="White">
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="5">
+                            <StackPanel VerticalAlignment="Top">
+                                <Slider x:Name="sliderZoom5" HorizontalAlignment="Left" Margin="0,6,0,0" VerticalAlignment="Top" Width="150"  ValueChanged="sliderZoom5_ValueChanged"/>
+                                <DockPanel >
+                                    <Label Name="zoomMinValue5" Margin="0,5,0,0" Width="50" Content="0" HorizontalContentAlignment="Left"/>
+                                    <Label Name="zoomMaxValue5" Margin="0,5,0,0" Content="000000" Width="50" HorizontalContentAlignment="Right" HorizontalAlignment="Right"></Label>
+                                </DockPanel>
+                            </StackPanel>
+                                <TextBox Name="zoomTextBox5" Width="70" Height="20" Margin="5,5,5,0" Text="000000" PreviewTextInput="NumericTextBoxInput" VerticalAlignment="Top" LostFocus="zoomTextBox_LostFocus" KeyDown="zoomTextBox_KeyDown"></TextBox>
+                        </StackPanel>
+                    </StackPanel>
+
+                </GroupBox>
+
+                    <Label Name="ActiveMarker5" VerticalAlignment="Center" Margin="10" FontSize="20" Visibility="Hidden" Foreground="White">&#x2605;</Label>
+
+
+                </StackPanel>
+
+
+            <StackPanel>
+            <Separator Height="5" Margin="10"/>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Label Foreground="White">Hold zoom position for </Label>
+                        <TextBox Name="holdTimeTextBox" Height="20" Margin="0,3,0,0" Width="50" Text="2" PreviewTextInput="NumericTextBoxInput"></TextBox>
+                        <Label Foreground="White"> seconds</Label>
+                </StackPanel>
+
+                <Separator Height="5" Margin="10"/>
+            </StackPanel>
+
+            </StackPanel>
+            
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button x:Name="buttonStart" Content="Start" Height="35" Width="112" Margin="5,5,5,20" Click="buttonStart_Click"/>
+            <Button x:Name="buttonStop" Content="Stop" Height="35" Width="112" Margin="5,5,5,20" IsEnabled="False" Click="buttonStop_Click"/>
+            </StackPanel>
+            
+            
+        </StackPanel>
+
+    </Grid>
+    <!--UI Colour Scheme-->
+    <Window.Resources>
+        <SolidColorBrush x:Key="WindowBrush" Color="#FF333333"/>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="FontFamily" Value="#Trebuchet MS"/>
+            <Setter Property="Background" Value="#FF333333"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="White" BorderThickness="1">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="DodgerBlue"/>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Background" Value="LightGray"/>
+                    <Setter Property="Foreground" Value="Gray"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="{x:Type Label}">
+            <Setter Property="FontFamily" Value="#Trebuchet MS"/>
+            <Setter Property="Background" Value="#FF333333"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+        <Style TargetType="{x:Type Border}">
+            <Setter Property="BorderBrush" Value="White"/>
+        </Style>
+        <Style TargetType="{x:Type Window}">
+            <Setter Property="FontFamily" Value="#Trebuchet MS"/>
+            <Setter Property="Background" Value="#FF333333"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+    </Window.Resources>
+
+
+</Window>

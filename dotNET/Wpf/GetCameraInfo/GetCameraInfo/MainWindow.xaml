@@ -1,0 +1,72 @@
+﻿<Window x:Class="GetCameraInfo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GetCameraInfo"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="342.921" Width="553.609"
+        Background="#FF333333">
+    <Grid Margin="0,0,0.4,1">
+        <Button x:Name="getCameraInfoButton" Content="Get Camera Info" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="172" Height="43" Click="button_Click"/>
+        <Label x:Name="label" Content="Camera Name:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,62,0,0" Width="103"/>
+        <Label x:Name="label_Copy" Content="Firmware Version:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="11,117,0,0" Width="103"/>
+        <Label x:Name="label_Copy1" Content="Description:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,90,0,0" Width="103"/>
+        <Label x:Name="label_Copy2" Content="FPGA Version:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="11,143,0,0" Width="103"/>
+        <Label x:Name="label_Copy3" Content="Model Name:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="11,171,0,0" Width="103"/>
+        <Label x:Name="label_Copy4" Content="Serial Number:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,199,0,0" Width="103"/>
+        <Label x:Name="label_Copy5" Content="Vendor Name:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,227,0,0" Width="103"/>
+        <Label x:Name="label_Copy6" Content="XML Version:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,255,0,0" Width="103"/>
+        <TextBox x:Name="cameraName" HorizontalAlignment="Left" Height="23" Margin="118,65,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="390"/>
+        <TextBox x:Name="description" HorizontalAlignment="Left" Height="23" Margin="119,93,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="390"/>
+        <TextBox x:Name="firmwareVersion" HorizontalAlignment="Left" Height="23" Margin="119,120,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="390"/>
+        <TextBox x:Name="fpgaVersion" HorizontalAlignment="Left" Height="23" Margin="119,146,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="390"/>
+        <TextBox x:Name="modelName" HorizontalAlignment="Left" Height="23" Margin="119,174,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="390"/>
+        <TextBox x:Name="serialNumber" HorizontalAlignment="Left" Height="23" Margin="119,202,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="390"/>
+        <TextBox x:Name="vendorName" HorizontalAlignment="Left" Height="23" Margin="119,230,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="390"/>
+        <TextBox x:Name="xmlVersion" HorizontalAlignment="Left" Height="23" Margin="119,258,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="390"/>
+
+    </Grid>
+
+    <!--UI Colour Scheme-->
+    <Window.Resources>
+        <SolidColorBrush x:Key="WindowBrush" Color="#FF333333"/>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="FontFamily" Value="#Trebuchet MS"/>
+            <Setter Property="Background" Value="#FF333333"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="White" BorderThickness="1">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="DodgerBlue"/>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Background" Value="LightGray"/>
+                    <Setter Property="Foreground" Value="Gray"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="{x:Type Label}">
+            <Setter Property="FontFamily" Value="#Trebuchet MS"/>
+            <Setter Property="Background" Value="#FF333333"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+        <Style TargetType="{x:Type Border}">
+            <Setter Property="BorderBrush" Value="White"/>
+        </Style>
+        <Style TargetType="{x:Type Window}">
+            <Setter Property="FontFamily" Value="#Trebuchet MS"/>
+            <Setter Property="Background" Value="#FF333333"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+    </Window.Resources>
+
+</Window>

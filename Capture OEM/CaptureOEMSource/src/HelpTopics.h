@@ -1,0 +1,13 @@
+#define IDH_SIMPLE_TAB				1
+#define IDH_ROI_TAB					2
+#define IDH_FEATURES_TAB			3
+#define IDH_DESCRIPTORS_TAB			4
+#define IDH_LOOKUPTABLES_TAB		5
+#define IDH_SPECIALIZATIONS_TAB		6
+#define IDH_GPIOS_TAB				7
+#define IDH_IMAGES_TAB				8
+#define IDH_CLIPS_TAB				9
+#define IDH_CALLBACKS_TAB			10
+#define IDH_API_TAB					11
+#define IDH_LENS_TAB                12
+#define IDH_LINK_TAB                13

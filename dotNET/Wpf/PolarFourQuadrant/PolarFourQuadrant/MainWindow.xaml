@@ -1,0 +1,85 @@
+﻿<Window x:Class="PolarFourQuadrant.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PolarFourQuadrant"
+        mc:Ignorable="d"
+        Title="Pixelink" Height="700" Width="1000"
+        Closing="Window_Closing"
+        KeyDown="Window_KeyDown"
+        Background="#FF333333"
+        Icon="PixeLINK Capture Icon Main Small.ico">
+    <Grid>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width=".1*"></ColumnDefinition>
+            <ColumnDefinition Name="Column0"></ColumnDefinition>
+            <ColumnDefinition Name="Column1"></ColumnDefinition>
+            <ColumnDefinition Width=".1*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="120"></RowDefinition>
+            <RowDefinition Name="Row0"></RowDefinition>
+            <RowDefinition Name="Row1"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Rectangle Fill="White" Grid.ColumnSpan="8"/>
+        <Image x:Name="PL_New_Logo_Orange_X_jpg" Grid.ColumnSpan="8" Margin="5" Source="PL New Logo Orange X.jpg" Stretch="Uniform"/>
+
+        <Button Name="FullscreenButton" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Width="75" Height="25" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5" Content="Full Screen" Click="FullScreen_Click"></Button>
+
+        <Image Name="DisplayImage" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Grid.RowSpan="2" VerticalAlignment="Top"></Image>
+
+
+        <Label  Grid.Column="0" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Right" FontSize="20" Foreground="White">0°</Label>
+        <Label  Grid.Column="3" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="20"  Foreground="White">45°</Label>
+        <Label  Grid.Column="3" Grid.Row="2" VerticalAlignment="Bottom" HorizontalAlignment="Left" FontSize="20"  Foreground="White" Margin="0,0,0,20">90°</Label>
+        <Label  Grid.Column="0" Grid.Row="2" VerticalAlignment="Bottom" HorizontalAlignment="Right" FontSize="20"  Foreground="White" Margin="0,0,0,20">135°</Label>
+
+    </Grid>
+
+    <!--UI Colour Scheme-->
+    <Window.Resources>
+        <SolidColorBrush x:Key="WindowBrush" Color="#FF333333"/>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="FontFamily" Value="#Trebuchet MS"/>
+            <Setter Property="Background" Value="#FF333333"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="White" BorderThickness="1">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="DodgerBlue"/>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Background" Value="LightGray"/>
+                    <Setter Property="Foreground" Value="Gray"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="{x:Type Label}">
+            <Setter Property="FontFamily" Value="#Trebuchet MS"/>
+            <Setter Property="Background" Value="#FF333333"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+        <Style TargetType="{x:Type Border}">
+            <Setter Property="BorderBrush" Value="White"/>
+        </Style>
+        <Style TargetType="{x:Type Window}">
+            <Setter Property="FontFamily" Value="#Trebuchet MS"/>
+            <Setter Property="Background" Value="#FF333333"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+    </Window.Resources>
+
+</Window>

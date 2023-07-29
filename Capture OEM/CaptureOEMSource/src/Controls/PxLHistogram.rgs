@@ -1,0 +1,34 @@
+HKCR
+{
+	PxLControls.PxLHistogram.1 = s 'PxLHistogram Class'
+	{
+		CLSID = s '{1505F715-4138-4366-B73C-347CC2AB1908}'
+	}
+	PxLControls.PxLHistogram = s 'PxLHistogram Class'
+	{
+		CLSID = s '{1505F715-4138-4366-B73C-347CC2AB1908}'
+		CurVer = s 'PxLControls.PxLHistogram.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {1505F715-4138-4366-B73C-347CC2AB1908} = s 'PxLHistogram Class'
+		{
+			ProgID = s 'PxLControls.PxLHistogram.1'
+			VersionIndependentProgID = s 'PxLControls.PxLHistogram'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			val AppID = s '%APPID%'
+			ForceRemove 'Control'
+			ForceRemove 'ToolboxBitmap32' = s '%MODULE%, 106'
+			'MiscStatus' = s '0'
+			{
+			    '1' = s '%OLEMISC%'
+			}
+			'TypeLib' = s '{05F1EB6C-B494-4AA2-9EEE-434B5B1A3ACE}'
+			'Version' = s '1.0'
+		}
+	}
+}

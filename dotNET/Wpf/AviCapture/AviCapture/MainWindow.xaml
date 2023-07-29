@@ -1,0 +1,70 @@
+﻿<Window x:Class="AviCapture.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AviCapture"
+        mc:Ignorable="d"
+        Title="AVI Capture" Height="232.064" Width="276.767"
+        DataContext="{Binding RelativeSource={RelativeSource Self}}" 
+        Closing="Window_Closing"
+        ResizeMode="CanMinimize"
+        Background="#FF333333">
+    <Grid>
+        <Button x:Name="StartCaptureButton" IsEnabled="{Binding ShowStartCapture}" Visibility="{Binding StartCaptureVisibility}" Content="Start Capture" Margin="57,10,0,0" VerticalAlignment="Top" Width="150" Height="50" Click="StartCaptureButton_Click" HorizontalAlignment="Left"/>
+        <Button x:Name="EndCaptureButton" IsEnabled="{Binding ShowStopCapture}" Visibility="{Binding StopCaptureVisibility}" Content="End Capture" Margin="57,10,0,0" VerticalAlignment="Top" Width="150" Height="50" Click="EndCaptureButton_Click" HorizontalAlignment="Left"/>
+        <ProgressBar x:Name="CaptureProgressBar" Visibility="{Binding StopCaptureVisibility}" Value="{Binding ClipProgress}" HorizontalAlignment="Left" Height="20" Margin="56,116,0,0" VerticalAlignment="Top" Width="150" Minimum="0" Maximum="1"/>
+        <Label x:Name="CapturedFileDisplay" Visibility="{Binding StopCaptureVisibility}" Content="{Binding CapturingToName}" HorizontalAlignment="Left" Margin="135,85,0,0" VerticalAlignment="Top" Height="26" Width="127"/>
+        <Label x:Name="CapturingToFileLabel" Visibility="{Binding StopCaptureVisibility}" Content="Capturing to file: " HorizontalAlignment="Left" Margin="33,85,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="ExitButton" Content="Exit" HorizontalAlignment="Left" Margin="92,162,0,0" VerticalAlignment="Top" Width="83" Click="ExitButton_Click"/>
+        <Button x:Name="StopConversionButton" IsEnabled="{Binding EnableStopConversion}" Visibility="{Binding StopConversionVisibility}" Content="Stop Conversion" Margin="57,10,0,0" VerticalAlignment="Top" Width="150" Height="50" Click="StopConversionButton_Click" HorizontalAlignment="Left"/>
+        <Label x:Name="label" IsEnabled="{Binding EnableStopConversion}" Visibility="{Binding StopConversionVisibility}"  Content="{Binding ConvertingToName}" HorizontalAlignment="Left" Margin="10,85,0,0" VerticalAlignment="Top" Width="255" Height="26"/>
+
+    </Grid>
+
+    <!--UI Colour Scheme-->
+    <Window.Resources>
+        <SolidColorBrush x:Key="WindowBrush" Color="#FF333333"/>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="FontFamily" Value="#Trebuchet MS"/>
+            <Setter Property="Background" Value="#FF333333"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="White" BorderThickness="1">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="DodgerBlue"/>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Background" Value="LightGray"/>
+                    <Setter Property="Foreground" Value="Gray"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="{x:Type Label}">
+            <Setter Property="FontFamily" Value="#Trebuchet MS"/>
+            <Setter Property="Background" Value="#FF333333"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+        <Style TargetType="{x:Type Border}">
+            <Setter Property="BorderBrush" Value="White"/>
+        </Style>
+        <Style TargetType="{x:Type Window}">
+            <Setter Property="FontFamily" Value="#Trebuchet MS"/>
+            <Setter Property="Background" Value="#FF333333"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+        <Style TargetType="{x:Type ProgressBar}">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="DodgerBlue"/>
+        </Style>
+    </Window.Resources>
+
+</Window>

@@ -1,0 +1,49 @@
+﻿<Window x:Class="Framerate.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Framerate"
+        mc:Ignorable="d"
+        Closing="close_mainWindow"
+        Title="Frame Rate Control" Height="350" Width="525" Background="#FF333333">
+    <Grid Margin="2,2,2,2">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="191*"/>
+            <ColumnDefinition Width="323*"/>
+        </Grid.ColumnDefinitions>
+        <Button x:Name="StartVideoPreview" Content="Preview" HorizontalAlignment="Left" Margin="160,56,0,0" VerticalAlignment="Top" Width="172" Height="43" Click="preview_Click" Grid.ColumnSpan="2"/>
+        <CheckBox x:Name="EnableFrameRate"  Content="Enable Frame Rate Control" HorizontalAlignment="Left" Margin="160,129,0,0" VerticalAlignment="Top" Click="enableFrameRate_Click" Foreground="White" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="34,127,0,0" TextWrapping="Wrap" Text="100" VerticalAlignment="Top" Width="50"/>
+        <Button x:Name="SetFrameRate" Content="Set Frame Rate" HorizontalAlignment="Left" Margin="34,157,2,2" VerticalAlignment="Top" Width="100" Click="setFrameRate_Click" Height="25"/>
+        <Label x:Name="label" Content="(fps)" HorizontalAlignment="Left" Margin="89,123,0,0" VerticalAlignment="Top" Width="33" Foreground="White" RenderTransformOrigin="0.603,0.054" Height="25"/>
+    </Grid>
+
+    <!--UI Colour Scheme-->
+    <Window.Resources>
+        <SolidColorBrush x:Key="WindowBrush" Color="#FF333333"/>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="FontFamily" Value="#Trebuchet MS"/>
+            <Setter Property="Background" Value="#FF333333"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="White" BorderThickness="1">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="DodgerBlue"/>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Background" Value="LightGray"/>
+                    <Setter Property="Foreground" Value="Gray"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+</Window>

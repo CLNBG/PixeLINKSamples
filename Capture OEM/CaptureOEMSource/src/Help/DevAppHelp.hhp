@@ -1,0 +1,27 @@
+[OPTIONS]
+Compatibility=1.1 or later
+Compiled file=DevAppHelp.chm
+Contents file=DevAppHelp.hhc
+Default topic=html\index.htm
+Display compile notes=No
+Display compile progress=No
+Error log file=Log1.log
+Index file=DevAppHelp.hhk
+Language=0x1009 English (Canada)
+Title=PixeLINK Developers Application Help
+
+
+[FILES]
+html\index.htm
+popups.h
+popups.txt
+
+[MAP]
+#include popups.h
+
+[TEXT POPUPS]
+popups.h
+popups.txt
+
+[INFOTYPES]
+

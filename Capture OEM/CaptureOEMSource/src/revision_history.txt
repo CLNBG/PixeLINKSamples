@@ -1,0 +1,391 @@
+**************************************************************************************************
+*
+* VERSION    DATE          CHANGES
+*
+************************************* 2004 *******************************************************
+*
+* 1.2        2004-08-18    Starting to track changes in this header file.
+*
+* 1.2.1      2004-08-25    Implemented Time Lapse Capture.
+*
+* 1.2.2      2004-08-30    Fixed (I hope) Laptop Friendly Mode.
+*                          Changed ROI controls to account for Flip and Rotate.
+*
+* 1.2.3      2004-08-31    Image Capture Full Frame discards first frame after restarting stream,
+*                          and also does full res (no decimation).
+*                          Pause preview during Full-Frame image capture.
+*                          More fixes to ROI controls to account for Flip and Rotate.
+*
+* 1.2.4      2004-09-13    Fixed Simple mode to update FrameRate display when required.
+*                          Added info about Trigger Mode 14.
+*                          Fixed bug in Export Config File that did not properly save GPIOs.
+*                          Added Capture Full Resolution option to Image Capture tab.
+*                          Fixed "Auto Expose Before Each Capture" in Time Lapse.
+*
+* 1.2.5      2004-09-15    Fixed problem with slider increments in Descriptor-tab popups.
+*
+* 1.2.6      2004-09-23    Got rid of the "Reconnect the camera" popup in single-camera case.
+*                          Fixed crash when unplugging camera.
+*
+* 1.2.7      2004-09-29    Fixed bug in Trigger Mode 14.
+*
+* 1.2.8      2004-11-20    Gain slider now works right for all cameras.
+*                          Changed some feature labels on the Descriptors page.
+*                          Shutter slider now limited by framerate in Advanced mode.
+*                          Only one trigger needed to grab full-frame image in HW trigger mode.
+*
+* 1.2.9      2004-11-23    Changed app name to "PixeLINK Capture OEM".
+*                          Make sure max ROI is available in drop-down, even when rotated.
+*
+* 1.3        2004-12-07    Public release version of Capture OEM.
+*                          Dragging ROI too small no longer produces an error message.
+*                          Fixed bug with GPOs in Config Files.
+*                          Added Raw Data format for saving images.
+*                          Disable FFC checkbox for unprogrammed cameras.
+*                          Cosmetic changes to GPO tab - added "seconds" labels.
+*                          Made ROI left/top/width/height edits respond to the Enter key.
+*
+* 1.3.1      2004-12-14    Fixed inaccuracies in the Histogram's conversion of YUV to RGB.
+*
+* 1.3.2      2004-12-17    Changed number of gain settings for 742.
+*                          Fixed WhiteBalance settings for 742/774/776.
+*                          Fixed Histogram's Bayer to RGB conversion for GBRG format.
+*
+* 1.3.3      2004-12-17    Posted to web site. Version incremented to help distinguish this from
+*                          last web release.
+*
+************************************* 2005 *******************************************************
+*
+* 1.3.4      2005-02-16    No longer stop stream to save settings.
+*                          Hard-code correct gains for PL-A622/774 and 623/776 cameras.
+*                          Fix Histogram Equalization on RGB to equalize YUV Y component.
+*
+* 1.3.4.1    2005-02-25    Added /preview command line option to auto-start preview.
+*                          Added Accumulator option to advanced mode histogram.
+*
+* 1.3.5      2005-03-23    Added 6500 whitebal value for 686/782 with hwver >= 2/130.
+*                          Reenabled help (Help -> Contents or F1).
+*
+* 1.4        2005-04-24    Release candidate.
+*
+* 1.4.1      2005-04-28    New gain settings for the 742 - now has 9 gains instead of 10.
+*
+* 1.4.2      2005-04-29    Changed copyright notice to 2005 on About box.
+*                          Built into release candidate SDK.
+*
+* 1.4.3      2005-06-14    Added LoadPxLDriver function.
+*                          Default to Laptop Friendly mode (1/2 speed).
+*
+* 1.4.4      2005-07-27    New gain values for Ibis4-based cameras.
+*
+* 1.4.5      2005-09-12    Display in About box whether camera has Factory or Field FFC cal.
+*
+* 1.4.5      2005-09-29    Fixed a bug whereby the About box for FFC cal (the 12-09-2005 change) 
+*                          would crash a 741/2
+*
+* 1.4.5.1    2005-10-27    No changes from 1.4.5  ; simply bumped the version number to identify 
+*                          this build (required to provide XIRIS with an engineeing version of the
+*                          the API and Driver (v4.1.21.2 and v4.1.20.1 respectivly).
+*
+* 1.4.5.2    2005-11-03    Changed Laptop Friendly mode to use the FEATURE_IMAGER_CLK_DIVISOR
+*
+************************************* 2006 *******************************************************
+*
+* 1.4.5.3    2006-06-27    Added small exception handling code to deal with the new USB cameras.
+*
+* 1.4.6      2006-08-18    Bumped the version number to reflect anticipated release.
+*
+* 1.4.6      2006-08-29    Removed the connection between laptop friendly mode, and FEATURE_IMAGER_CLK_DIVISOR.
+*                          Rather, the FEATURE_IMAGER_CLK_DISISOR is now controlled with a new "Slow Imager Mode" menu pick.
+*
+* 1.4.6.1    2006-09-01    Added ability to show the version number of both 4.1 and 4.2 APIs in the help about panel
+*
+* 1.4.6.2    2006-09-11    Fixed a bug whereby untimely detatching of the camera could cause abend.
+*
+* 1.4.6.3    2006-09-29    Issue.USB.31 - Fixed a ApiInvalidParameter error with the ExternalControl tab.  See Issue.USB.31
+*                          Issue.USB.33 - Fixed a problem whereby extracting one camera did not active a new camera.
+*            2006-10-04    Issue.Software.35 - Fixed a problem whereby a camera that was 
+*                               disconnected/reconnected, may have been left is a streaming state.
+*                          Issue.Software.33 - Fixed a problem whereby attempting to turn on the API call log would abend Capture OEM
+*            2006-10-18    Issue.USB.39 - Prevent the system from entering into a sleep (suspend) state while the camera is streaming
+*
+* 1.4.6.4    2006-10-27    Issue.USB.37 - Fixed a 'No Camera Error' when a camera got unplugged
+*            2006-10-21    Added support for FEATURE_TRIGGER_WITH_CONTROLLED_LIGHT
+*            2006-10-22    Issue.Software.60 - Adding a new feature at the end of the feature list, caused heap corruption.
+*
+* 1.4.6.5    2006-12-13    Issue.Software.70 - New gain values for PL-B741s
+*                          Issue.Software.72 - Laptop Friendly Mode should default to off.
+*
+************************************* 2007 *******************************************************
+*
+* 1.4.6.6    2007-02-26    Issue.Software.110 - Added support for FEATURE_SHARPNESS
+*
+* 1.4.6.7    2007-03-26    Issue.Software.113 - Added the release version string (Product Version) to the About dialog
+*            2007-03-29    Issue.PL-B950.2    - Added support for cameras which do not support decimation
+*
+* 1.4.6.8    2007-06-15    Issue.Software.135 - Changes for PIXELINK_SDK_ROOT enviro var
+*            2007-06-15    Issue.Software.133 - Added support for FEATURE_MAX_PIXEL_SIZE
+*            2007-06-29    Issue.Software.143 - Release 6.18 for new TWAIN interface
+*
+* 1.4.6.9    2007-08-21    Issue.Software.123 - Callback filter not being applied to captured images
+*
+* 1.4.6.10   2007-09-17    Issue.Software.123 - Ignoring invalid error reported by API
+*
+* 1.4.6.11   2007-11-22    Issue.Software.175 - Knee points supported iff FEATURE_EXTENDED_SHUTTER supported
+*                          Issue.Software.165 - Capture OEM would abend when attempting to use API call log
+*
+* 1.4.6.12   2007-12-11    Issue.Software.198 - CAMERA_FEATURES doesn't report data for each and every feature anymore
+*            2007-12-11    Issue.Software.199 - FEATURE_EXPOSURE neither supported nor defined now
+*            2007-12-11    Issue.Software.200 - Setting triggering and kneepoints requires streaming off on some cameras
+*            2007-12-13    Issue.Software.201 - Removing Issue.Software.200 because the camera has been fixed
+*
+************************************* 2008 *******************************************************
+*
+* 1.4.7      2008-05-01    Issue.Software.203 - Lookup table not being refreshed after importing pixelink capture config file (.pcc)
+*                          Issue.Software.217 - Add a splash screen
+*                          Issue.Software.218 - Reduce number of calls to PxLNumberCameras at startup
+*                          Issue.Software.221 - Release version in About box not displayed correctly
+*                          Issue.Software.222 - Display IP info in About box and in descriptor page
+*                          Issue.Software.223 - Use VERSION_INFO instead of version
+*                          Issue.Software.224 - Log new GigE API functions in ApiListener
+*                          Issue.GigE.58      - Uninitialize current camera when switching to another camera
+*                          Issue.Software.226 - Support multiple instances via /allowMultipleInstances cmd line parameter
+*                          Issue.Software.227 - Added ability to set camera ip address
+*                          Issue.Software.229 - Better handling in histogram of frames received in callback out of sequence
+*
+* 1.4.7.1    2008-08-26    Issue.Software.233 - Histogram freezes when changing features that require a stop/start of the stream.
+*                          Issue.GigE.67      - Exit Capture OEM when launching IP address tool
+*                          Issue.Software.247 - Provide warning when temperature getting warm
+*                          Issue.Software.249 - 8-bit Mono bitmaps not displaying properly when used for preview bitmap overlay
+*                          Issue.Software.251 - Removed hard-coded gains and color temperature values
+*                          Issue.Software.255 - Gain and color temp values now dynamically determined
+*
+* 1.4.7.2    2008-11-21    Added temporal filter to list of callbacks
+*                          Adjusted defines to use new defines in latest PixeLINKTypes.h
+*
+* 1.4.7.3    2008-12-04    Issue.Software.269 - Support /jumbo command-line to enable jumbo frames
+*
+************************************* 2009 *******************************************************
+*
+* 1.4.7.4    2009-02-06    Issue.Software.279 - CAMERA_ID_INFO struct has changed
+*                          Issue.Software.284 - Turning off streaming when changing triggering
+*                          Issue.Software.287 - Don't reload camera list when switching tabs
+*
+* 1.4.8      2009-03-01    Issue.Software.288 - Problems running when compiled and running under VS2005
+*                          Issue.Software.289 - Add support for new FEATURE_FLAG_SETTABLE_WHILE_STREAMING
+*                          Issue.Software.290 - Example GUI now ifdefable with SHOW_EXAMPLE_GUI
+*                          Issue.Software.291 - Removed vestigial DCAM CFeatureGui tab 
+*
+* 1.5        2009-07-29    Issue.Software.300 - Api call logger not logging PxL(Set|Get)Feature
+*                          Issue.Software.302 - Video Capture tab wasn't defaulting to AVI file format on virgin machines
+*                          Issue.Software.303 - Stop creating the PixeLINK\Capture OEM registry key entry
+*                          Issue.Software.305 - Crash when selecting preview callback function
+*                          Issue.Software.322 - Release Version being read from registry instead of PRODUCTVERSION in VERSION_INFO
+*
+************************************* 2010 *******************************************************
+*
+* 1.5.1      2010-01-25    Issue.Software.335 - Not reporting negative temperatures correctly.
+*
+* 1.5.2      2010-03-26    Issue.Software.340 - Mono 950 cameras disable FFC when binning. Handle FFC disable/enable accordingly.
+*                          Issue.Software.342 - Streaming is messed up after PxLSetStreamState(START) fails
+*
+************************************* 2011 *******************************************************
+*
+* 1.6        2011-01-10    Added support for FEATURE_(SENSOR|BODY)_TEMPERATURE
+*
+* 1.6.1      2011-01-17    CAMERA_ID_INFO field Reserved was changed to CameraProperties
+*
+* 1.6.2      2011-01-24    Splash screen no longer topmost in debug builds
+*
+* 1.6.3      2011-05-04    Bug 25 - Capture OEM is wrong size when DPI is not the standard 96 DPI
+*
+* 1.6.4      2011-06-06    Bug 26 - Allow support for connection to multiple cameras
+*
+* 1.6.5      2011-07-19    Bug 30 - Gain 'range' calculation takes too long on some GigE cameras with fine resolution.
+*
+* 1.6.5.1    2011-08-11    Bug 37 - Use the new PxLInitializeEx function
+*            2011-08-11    Added new command line option '/monitorAccessOnly' so c-OEM does not grab control access to a camera
+*            2011-08-11    Added support for new API return codes added to support native GEV cameras
+*            2011-09-28    Bug 34 No FFC data is now returned if C-OEM cannot read the camera's FFC info
+*            2011-09-29    Bug 44 changed to default to 'Advanced Mode'
+*            2011-09-30    Bug 46 Stream must be stopped/started on changes to FEATURE_ROI
+*
+* 1.6.5.2    2011-10-21    Added support for FEATURE_MAX_PACKET_SIZE
+*            2011-11-17    Added GEV driver version to Help->About
+*            
+************************************* 2012 *******************************************************
+*
+* 2.0        2012-01-30    Migrated to Visual Studio 2008
+*                          Removed ApiListener
+*                              Similar functionality now available via ApiSpy
+*                              ApiSpyConfig now available to configure ApiSpy
+* 
+* 2.0.1      2012-02-01    Bug 80 - Issue with exposure slider taking a long time to update when disabling frame rate
+* 2.0.2      2012-02-10    Added two callback filters: Negative and Grayscale.
+*
+* 2.1        2012-02-23    Bug  91 - Added ability to copy the information in the Help\About dialog to the clipboard
+* 
+* 2.2        2012-03-12    Bug  97 - PxLCameraWrite called with camera handle of 0 at startup
+*                                  - Minor GUI modifications
+* 
+* 2.3                      Bug 109 - Set camera name needs a wait cursor
+*                          Bug 112 - Exporting and importing camera settings to config file was crashing.
+*
+* 2.3.1      2012-08-27    Bug 162 - Help About not showing 1394 and USb driver versions properly
+*
+* 2.3.2      2012-08-30              Removed PixeLINK-specific post-build command.
+*                                    Callback Saturated and Black a little more tolerant now
+*                          Bug 169 - Loading factory settings while previewing messes up preview window
+*
+* 2.3.3      2012-09-10    Bug 162 - Fixed typo in the 32-bit USB driver name
+*                          Bug 177 - If bitmap for overlay can't be found, overlay callback doesn't change
+*
+*            ????-??-??    Bug 184 - Turning on GPO returns ApiInvalidParameterError
+*
+* 2.3.4      2012-09-27    Bug 192 - USB Cameras were no longer reporting support for PULSE GPO mode
+*            
+************************************* 2013 *******************************************************
+*
+*            2013-03-15    Bug 178/220 - change how C-OEM uses/presents, kneepoints
+* 2.3.5      2013-04-17    Bug 165/202 - Histrogram window would stop updating when the stream is restarted
+*            2013-07-23    Added ability to see XML File version for PL-D (USB3) cameras
+*            2013-09-20    Added changes for Bandwidth control and asymmetric pixel addressing.
+*            2013-09-20    Bugzilla.311 - Roi Selector does not work well
+*            2013-10-03    Added support for FEATURE_ACTUAL_FRAME_RATE
+* 2.3.6      2013-10-08    Bugzilla.323 - Add a camera poller to look for cameras when C-OEM does not have one.
+*            2013-10-22    Bugzilla.348 - Need to be able to see Bootload version.
+*            2013-10-29    Bugzilla.226 - Don't allow autoExposure with kneepoints
+*            2013-10-29    Bugzilla.357 - Fixed the units displayed for each of the GPO parameters
+* 2.3.7      2013-11-05    Bugzilla.353 - Clear checkbox of kneepoints no longer active
+* 2.3.7.1    2013-11-12    Bugzilla.226 - Don't allow autoExposure with kneepoints (again).
+*            2013-11-12    Bugzilla.386 - Pause then stopping the preview, can get histogram stream out of sync.
+* 2.3.7.2    2013-11-13    Bugzilla.412 - Error when attempting to capture an image with SVS GigE cameras.
+*            2013-11-14    Bugzilla.415 - Max Packet size not being updated for GigE camera
+* 2.3.7.3    2013-11-18    Bugzilla.426 - Descriptor fields are not updated with changes to camera name
+*                          Bugzilla.419 - Don't allow auto exposure if software triggered
+* 2.3.7.4    2013-11-21    Bugzilla.444 - C-OEM does not show USB3 driver version
+* 2.3.7.5    2013-11-27    Bugzilla.462 - Allow body temperature to reach 70 degreees before going red
+*                          Bugzilla.458 - Saving camera name while streaming makes it look like stream has stopped
+*            
+************************************* 2014 *******************************************************
+*
+* 2.3.7.6    2014-04-22    Added support for FEATURE_SHARPNESS_SCORE and FEATURE_FOCUS, including 
+*                          sharpnessScoreROI callback and new 'Lens' tab.
+* 2.3.7.7    2014-04-30    Bugzilla.232 - Unplugging a camera while histrogram is open, could lead to abend.
+* 2.3.7.8    2014-05-12    Bugzilla.521 - Camera stream may not be able to stop once restarted follwing a capplication wathdog reconfigure.
+*            2014-05-14    Bugzilla.519 - Added the Sharpness Score ROI preview callback as a checkbox in the Lens tab
+*            2014-05-22    Bugzilla.528 - Allow a USB3 camera to be connected via USB2 (at a reduced speed).
+*            2014-05-28    Bugzilla.530 - Unusual behavior of the ROI combo box.
+*            2014-05-28    Bugzilla.529 - 'Image Capture' and 'Basic Controls' do not use the same file name incrument algorithm.
+*            2014-06-02    Bugzilla.536 - Help->About not showing version for NDIS 6 GEV driver
+* 2.3.7.9    2014-06-12    Bugzilla.561 - Sharpness Score ROI callback filter, does not show properly then the image is flipped.
+*            2014-06-12    Bugzilla.562 - Sharpness Score ROI is not centered when a new dropdown is selected.
+*            2014-06-16    Bugzilla.563 - don't allow auto-exposed time lapse if software triggering is enabled.
+*            2014-06-18    Bugzilla.565 - LUT graph may not show correctly after Gamma has been disabled
+* 2.3.7.10   2014-10-10    Bugzilla.428 & Bugzilla.614 - Re-read exposure limits when the exposure slider is changed.
+*            2014-11-24    Bugzilla.628 - Bayer12 Pixel format not shown correctly for non-GRBG cameras.
+*            2014-12-01    Added Cancel button to the image capture dialog.
+*            2014-12-10    Bugzilla.631 - Can't enable kneepoints > 1, on some camera models (such as PL-D732)
+*            
+************************************* 2015 *******************************************************
+*
+*            2015-03-24    Bugzilla.660 - Exposure is not updated if C-OEM is started with continuous AE enabled
+*            2015-04-08    Added support for _MSFIRST type 12-bit packed formats
+*	         2015-04-15    Added support for FEATURE_SPECIAL_CAMERA_MODE
+*            2015-04-17    Bugzilla.667 - Removed LaptopFriendly menu items, but left the code otherwise there.  This feature is deprecated.
+*            2015-04-20    Bugzilla.643 - Time lapse capture can show negative time remaining
+*	         2015-04-24    Bugzilla.598 - The SDK/CameraKit Release version identifier can now be located off of HK_LOCAL_MACHINE
+*	         2015-04-25    Bugzilla.601 - We need to he able to cancel a one-time auto operation
+*            2015-07-05    Bugzilla.696 - TriggerNumber should default to 1, not 0.
+*	         2015-08-20    Bugzilla.723 - Continuous image capture can produce repeated errors on camera disconnect.
+* 2.3.7.11   2015-08-31    Bugzilla.733 - Frame rate not displayed correctly when in FixedFrameRate mode
+*            2015-09-03    Bugzilla.736 - 'Always On Top' menu setting should be persistent.
+* 2.3.7.12   2015-09-23    Bugzilla.741 - ROI drop down shows invalid entered for cameras that support FixedFramerateMode
+*	         2015-09-28    Bugzilla.745 - Historgram does not look correct with 12 bit Packed mode for PL-D cameras
+*            
+************************************* 2016 *******************************************************
+*
+* 2.3.7.13   2016-02-26    Bugzilla.797 - C-OEM does not support limited auto-focus, even if the camera does
+* 2.3.7.14   2016-06-20    Added support for a General Purpose Input (GPI)
+* 2.3.7.15   2016-10-20    Bugzilla.914 - Camera still is GPI capable if it cant enble GPI becasue of hardware trigger conflict.
+* 2.3.7.16   2016-12-13    Added support for h264 compressed video capture
+*            
+************************************* 2017 *******************************************************
+*
+* 2.3.7.17   2017-05-15    Bugzilla.1026 - Minimum OS supported bumped up to WinXP to allow builds with more recent Visual Studios
+*            2017-05-17    Bugzilla.1025 - Report proper error for function calls not that are not camera related
+*                          Bugzilla.913 - Stream state becomes confused if both 'Capture Full Frame' and 'Capture Full Resolution' are checked
+* 2.3.7.18   2017-06-12    Bugzilla.1027 - Entering an invalid Plaback Bit Rate could crash C-EOM
+*            2017-06-13    Bugzilla.851 - Advanced histogram should allow the user control on Y, U, V plot lines
+*            2017-06-14    Bugzilla.778 - Software trigger / Image capture issues when used with certain options
+*            2017-06-29    Bugzilla.1074 - Added PNG file format
+*            2017-09-28    Added support for 10 bit packed format (xxxx10_PACKED_MSFIRST)
+*            2017-11-08    Bugzilla.1148 - quick time lapse capture can cause C-OEM to 'hang'
+*            2017-11-24    Bugzilla.1165 - Error when enabling fixed frame rate.
+* 2.3.7.19   2017-10-31    Added support for Navitar zoom and focus controller
+*            2017-12-07    Bugzilla.1194 - Frame rate edits were sometimes enabled in fixed framerate mode
+*            2017-12-13    Bugzilla.1214 - C-OEM can erroneously show 'frame rate limit' warning
+*            
+************************************* 2018 *******************************************************
+*
+* 2.3.7.20   2018-02-01    Bugzilla.1253 - The max SharpnessScore value need to be updated with each change to the SS ROI
+*            2018-02-01    Bugzilla.1246 - SS-ROI checkbox could show enabled when it is not.
+* 2.3.7.21   2018-03-13    Added support for AutoRoi, auto  gain, and limits on auto expsoure.
+*            2018-03-15    Bugzilla.1286 & 1288 - Issues capturing images under specific conditions.
+* 2.3.7.22   2018-04-09    Bugzilla.1303 - Auto ROI dropdown not updated under some conditions.
+*            2018-04-13    Bugzilla.1312 - Provide a warning if a controller can't be open because some other app has it open
+* 2.3.7.23   2018-04-18    Bugzilla.1317 - If a camera does not support auto exposure limits, don't show any values
+*            2018-04-19    Bugzilla.1319 - Re-check supported gains when continuous auto gains is disabled (if we don't already know them)
+*            2018-04-20    Bugzilla.1216 - Added specific error message when there are not enough images to encode a video
+* 2.3.7.24   2018-08-02    Added support for Camera based HDR - but hidden (not visible) for now.
+*            2018-08-22    Bugzilla.1357 - Video capture is now available from basic controls tab
+* 2.3.7.25   2018-08-30    Made HDR support visible
+*            2018-08-30    Added support for polar cameras (PIXEL_FORMAT_HSV4_12, PIXEL_FORMAT_POLAR4_12 and PIXEL_FORMAT_STOKES4_12)
+*	         2018-10-01    Added Polar channel adjusements (for FEATURE_POLAR_WEIGHTINGS)
+*            
+************************************* 2019 *******************************************************
+*
+* 2.3.7.26   2019-06-27    Added minor changes to aid in robustness when dealing with unstable PL-X cameras
+*            2019-10-01    Bugzilla.1643 - fixed type with Specilizations tab
+*            2019-10-30    Added support for FEATURE_PTP and Action commands (PxLSetActions)
+*
+************************************* 2020 *******************************************************
+*
+* 2.3.7.27   2019-12-12    Added support for PxLSetEventCallback, including adding a handler for EVENT_CAMERA_DISCONNECTED
+*            2020-01-13    Bugzilla.1836 - Historgram should display 2 frame rates, camera output and host input
+*            2020-01-14    Bugzilla.1840 - XML / Firmware versions not being displayed correctly
+* 2.3.7.28   2020-04-22    Bugzilla.1913 - Changing the HDR mode can change the exposure limits
+* 2.3.7.29   2020-05-13    Added support for H265 Encoding, and updated the UI (** DISABLED FOR NOW -- See Bugzilla.1943**)
+* 2.3.7.30   2020-06-01    Bugzilla.1949 - New video capture size/playback speed, does not factor for PixelAddressing
+* 2.3.7.31   2020-07-16    New ffmmpeg library (v4.2.2),with h.265 support (** DISABLED FOR NOW -- See Bugzilla.1943**)
+*            2020-07-20    Bugzilla.1980 - Events are not represented properly
+*            2020-07-20    Bugzilla.1983 - Adding clear button for the events control
+* 2.3.7.32   2020-07-28    Bugzilla.1988 - GPIOs and triggers should allow a resoliution of of 10s of ns (5 decimal places)
+*            2020-08-05    Bugzilla.2007 - Update the PTP state even if PTP is disabled
+*            2020-08-07    Bugzilla.2009 - Update some text
+* 2.3.7.33   2020-08-18    Bugzilla.2023/2024 - Updates to PTP handling
+* 2.3.7.34   2020-09-02    Bugzilla.2059 - Callback filters not applied to hdr cameras in interleaved mode 
+* 2.3.7.35   2020-09-15    BugzilGPIO Stla.2099 - Don't report ApiRequiresControlAccess errors if the user has specficed monitor access only
+* 2.3.7.36   2020-09-24    Bugzilla.2108 - Don't allow user to change options while in /monitoraccessonly mode
+*            2020-09-29    Bugzilla.2117 - Don't allow the user to switch to 'simple' histogram mode; it is not longer supported
+*            2020-09-30    Bugzilla.2091 - Add support for FramesSkipped event
+*
+************************************* 2021 *******************************************************
+*
+* 2.3.7.37   2021-01-11    Bugzilla.1998 - Show a warning when GPIO sStobe has too short of an exposure 
+*            2021-01-14    Bugzilla.2207 - Performance improvements for PNG captures
+*            2021-01-18    Added support for new Alpha pixel formats; RGBA/BGRA/ARGB/ABGR
+*            2021-02-11    Added return codes for API Lite (not used on Windows)
+*            2021-02-23    Bugzilla.2196 - Added YUV support to some of the callbacks 
+*            2021-04-08    Bugzilla.2280 - Fixed typo,now reads '90 degrees'
+*            2021-04-23    Bugzilla.2293 - Changing to/from FixedFramerateMode affectstrigger and GPIO support
+*            2021-07-16    Bugzilla.2324 - Fixed a bug in bugfix for Bugzilla.2108
+* 2.3.7.38   2021-08-10    Bugzilla.2330 - Provide visual indication if a camera support on-camera flipping
+*            2021-08-10    Bugzilla.2329 - Account for descimaton when calcualting the number of frames for clip capture.
+* 2.3.7.39   2021-09-21    Bugzilla.2373 - Changing Auto ROI size enables continuous Auto ROI exposure
+*            2021-09-22    Bugzilla.2379 - C-OEM should have ability to show Auto ROI on Preview window
+* 2.3.7.40   2021-11-25    Fixes required for Alpha pixel format; RGBA/BGRA/ARGB/ABGR
+*            2021-12-16    Bugzilla.2424 - Apha edit field should only be enabled while using an alpha pixel format
+* 2.3.7.41   2022-01-20    Added support for Navitar Resolv LED Controller + FEATURE_LIGHTING
+*
+**************************************************************************************************

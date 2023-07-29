@@ -1,0 +1,277 @@
+// PxLControls.idl : IDL source for PxLControls
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (PxLControls.tlb) and marshalling code.
+
+#include "olectl.h"
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	object,
+	uuid(EBBDFD15-4DAC-445D-9BA0-001A9F11183E),
+	dual,
+	nonextensible,
+	helpstring("IPxLSubwindow Interface"),
+	pointer_default(unique)
+]
+interface IPxLSubwindow : IDispatch{
+	[propput, bindable, requestedit, id(DISPID_BACKCOLOR)]
+	HRESULT BackColor([in]OLE_COLOR clr);
+
+	[propget, bindable, requestedit, id(DISPID_BACKCOLOR)]
+	HRESULT BackColor([out,retval]OLE_COLOR* pclr);
+
+	[propput, bindable, requestedit, id(DISPID_BORDERCOLOR)]
+	HRESULT BorderColor([in]OLE_COLOR clr);
+
+	[propget, bindable, requestedit, id(DISPID_BORDERCOLOR)]
+	HRESULT BorderColor([out, retval]OLE_COLOR* pclr);
+
+	[propput, bindable, requestedit, id(DISPID_FILLCOLOR)]
+	HRESULT FillColor([in]OLE_COLOR clr);
+
+	[propget, bindable, requestedit, id(DISPID_FILLCOLOR)]
+	HRESULT FillColor([out, retval]OLE_COLOR* pclr);
+
+	[propput, bindable, requestedit, id(DISPID_FORECOLOR)]
+	HRESULT ForeColor([in]OLE_COLOR clr);
+
+	[propget, bindable, requestedit, id(DISPID_FORECOLOR)]
+	HRESULT ForeColor([out,retval]OLE_COLOR* pclr);
+
+	[propput, bindable, requestedit, id(DISPID_ENABLED)]
+	HRESULT Enabled([in]VARIANT_BOOL vbool);
+
+	[propget, bindable, requestedit, id(DISPID_ENABLED)]
+	HRESULT Enabled([out,retval]VARIANT_BOOL* pbool);
+
+	[id(1), helpstring("method SetBounds"), source]
+	HRESULT SetBounds([in] LONG width, [in] LONG height);
+
+	[id(2), helpstring("method SetSubwindow"), source]
+	HRESULT SetSubwindow([in] LONG left, [in] LONG top, [in] LONG width, [in] LONG height);
+
+	[id(3), helpstring("method GetBounds")]
+	HRESULT GetBounds([out] LONG* width, [out] LONG* height);
+
+	[id(4), helpstring("method GetSubwindow")]
+	HRESULT GetSubwindow([out] LONG* left, [out] LONG* top, [out] LONG* width, [out] LONG* height);
+
+	[id(5), helpstring("method SetSize"), source]
+	HRESULT SetSize([in] LONG width, [in] LONG height);
+
+	[propget, id(6), helpstring("property MinWidth"), source]
+	HRESULT MinWidth([out, retval] LONG* pVal);
+
+	[propput, id(6), helpstring("property MinWidth"), source]
+	HRESULT MinWidth([in] LONG newVal);
+
+	[propget, id(7), helpstring("property MinHeight"), source]
+	HRESULT MinHeight([out, retval] LONG* pVal);
+
+	[propput, id(7), helpstring("property MinHeight"), source]
+	HRESULT MinHeight([in] LONG newVal);
+
+	[id(8), helpstring("method SetLeft"), source]
+	HRESULT SetLeft([in] LONG left);
+
+	[id(9), helpstring("method SetTop"), source]
+	HRESULT SetTop([in] LONG top);
+
+	[id(10), helpstring("method SetBottom"), source]
+	HRESULT SetBottom([in] LONG bottom);
+
+	[id(11), helpstring("method SetRight"), source]
+	HRESULT SetRight([in] LONG right);
+
+	[id(12), helpstring("method SetWidth"), source]
+	HRESULT SetWidth([in] LONG width);
+
+	[id(13), helpstring("method SetHeight"), source]
+	HRESULT SetHeight([in] LONG height);
+
+	[propget, id(14), helpstring("property AmbientColor")]
+	HRESULT AmbientColor([out, retval] OLE_COLOR* pVal);
+
+	[propput, id(14), helpstring("property AmbientColor")]
+	HRESULT AmbientColor([in] OLE_COLOR newVal);
+};
+
+[
+	object,
+	uuid(24D06C4B-195F-43DB-B4C8-7F2E327F0517),
+	dual,
+	nonextensible,
+	helpstring("IPxLLookup Interface"),
+	pointer_default(unique)
+]
+interface IPxLLookup : IDispatch{
+	[propput, bindable, requestedit, id(DISPID_BORDERCOLOR)]
+	HRESULT BorderColor([in]OLE_COLOR clr);
+	[propget, bindable, requestedit, id(DISPID_BORDERCOLOR)]
+	HRESULT BorderColor([out, retval]OLE_COLOR* pclr);
+	[propput, bindable, requestedit, id(DISPID_BORDERWIDTH)]
+	HRESULT BorderWidth([in]long width);
+	[propget, bindable, requestedit, id(DISPID_BORDERWIDTH)]
+	HRESULT BorderWidth([out, retval]long* width);
+	[propput, bindable, requestedit, id(DISPID_DRAWWIDTH)]
+	HRESULT DrawWidth([in]long width);
+	[propget, bindable, requestedit, id(DISPID_DRAWWIDTH)]
+	HRESULT DrawWidth([out, retval]long* pwidth);
+	[propput, bindable, requestedit, id(DISPID_FORECOLOR)]
+	HRESULT ForeColor([in]OLE_COLOR clr);
+	[propget, bindable, requestedit, id(DISPID_FORECOLOR)]
+	HRESULT ForeColor([out,retval]OLE_COLOR* pclr);
+	[propput, bindable, requestedit, id(DISPID_ENABLED)]
+	HRESULT Enabled([in]VARIANT_BOOL vbool);
+	[propget, bindable, requestedit, id(DISPID_ENABLED)]
+	HRESULT Enabled([out,retval]VARIANT_BOOL* pbool);
+	[id(1), helpstring("method FillTable")]
+	HRESULT FillTable([in] LONG length, [in] LONG* table);
+	[id(2), helpstring("method GetPointCount")]
+	HRESULT GetPointCount([out,retval] LONG* count);
+	[id(3), helpstring("method GetPoints")]
+	HRESULT GetPoints([out] LONG* points, [out] BYTE* lineTypes, [in] LONG nPoints);
+	[id(4), helpstring("method SetPoints")]
+	HRESULT SetPoints([in] LONG* points, [in] BYTE* lineTypes, [in] LONG nPoints);
+	[id(5), helpstring("method Reset")]
+	HRESULT Reset(void);
+	[id(6), helpstring("method SetFromTable")]
+	HRESULT SetFromTable([in] LONG length, [in] LONG* table);
+};
+
+[
+	object,
+	uuid(FB4DE4CF-7F6B-440F-AFAD-C8FB4EDCE613),
+	dual,
+	nonextensible,
+	helpstring("IPxLHistogram Interface"),
+	pointer_default(unique)
+]
+interface IPxLHistogram : IDispatch{
+	[propput, bindable, requestedit, id(DISPID_BACKCOLOR)]
+	HRESULT BackColor([in]OLE_COLOR clr);
+	[propget, bindable, requestedit, id(DISPID_BACKCOLOR)]
+	HRESULT BackColor([out,retval]OLE_COLOR* pclr);
+	[propput, bindable, requestedit, id(DISPID_BORDERCOLOR)]
+	HRESULT BorderColor([in]OLE_COLOR clr);
+	[propget, bindable, requestedit, id(DISPID_BORDERCOLOR)]
+	HRESULT BorderColor([out, retval]OLE_COLOR* pclr);
+	[propput, bindable, requestedit, id(DISPID_BORDERWIDTH)]
+	HRESULT BorderWidth([in]long width);
+	[propget, bindable, requestedit, id(DISPID_BORDERWIDTH)]
+	HRESULT BorderWidth([out, retval]long* width);
+	[propput, bindable, requestedit, id(DISPID_FORECOLOR)]
+	HRESULT ForeColor([in]OLE_COLOR clr);
+	[propget, bindable, requestedit, id(DISPID_FORECOLOR)]
+	HRESULT ForeColor([out,retval]OLE_COLOR* pclr);
+	[propput, bindable, requestedit, id(DISPID_ENABLED)]
+	HRESULT Enabled([in]VARIANT_BOOL vbool);
+	[propget, bindable, requestedit, id(DISPID_ENABLED)]
+	HRESULT Enabled([out,retval]VARIANT_BOOL* pbool);
+
+	[id(1), helpstring("method SetHistogramData")]
+	HRESULT SetHistogramData([in] LONG nDataPoints, [in] LONG* pData);
+
+};
+
+[
+	object,
+	uuid(41279666-1BC7-4DEB-8E60-64F0C4E7EAFB),
+	dual,
+	nonextensible,
+	helpstring("IPxLGraph Interface"),
+	pointer_default(unique)
+]
+interface IPxLGraph : IDispatch{
+	[propput, bindable, requestedit, id(DISPID_BACKCOLOR)]
+	HRESULT BackColor([in]OLE_COLOR clr);
+	[propget, bindable, requestedit, id(DISPID_BACKCOLOR)]
+	HRESULT BackColor([out,retval]OLE_COLOR* pclr);
+	[id(1), helpstring("method AddElement")] HRESULT AddElement([out,retval] LONG* elementId);
+	[id(2), helpstring("method RemoveElement")] HRESULT RemoveElement([in] LONG elementNumber);
+	[id(3), helpstring("method Clear")] HRESULT Clear(void);
+	[id(4), helpstring("method GetElementCount")] HRESULT GetElementCount([out,retval] LONG* elementCount);
+	[id(5), helpstring("method SetXRange")] HRESULT SetXRange([in] DOUBLE min, [in] DOUBLE max);
+	[id(6), helpstring("method SetYRange")] HRESULT SetYRange([in] DOUBLE min, [in] DOUBLE max);
+	[id(7), helpstring("method SetXYData")] HRESULT SetXYData([in] LONG elementNumber, [in] DOUBLE* xData, [in] DOUBLE* yData, [in] LONG nPoints);
+	[id(8), helpstring("method SetYData")] HRESULT SetYData([in] LONG elementNumber, [in] DOUBLE* yData, [in] LONG nPoints);
+	[id(9), helpstring("method SetLineColor")] HRESULT SetLineColor([in] LONG elementNumber, [in] OLE_COLOR color);
+	[id(10), helpstring("method SetLineWidth")] HRESULT SetLineWidth([in] LONG elementNumber, [in] LONG width);
+	[propget, id(11), helpstring("property AutoScaleX")] HRESULT AutoScaleX([out, retval] VARIANT_BOOL* pVal);
+	[propput, id(11), helpstring("property AutoScaleX")] HRESULT AutoScaleX([in] VARIANT_BOOL newVal);
+	[propget, id(12), helpstring("property TrackMouse")] HRESULT TrackMouse([out, retval] VARIANT_BOOL* pVal);
+	[propput, id(12), helpstring("property TrackMouse")] HRESULT TrackMouse([in] VARIANT_BOOL newVal);
+	[propget, id(13), helpstring("property AutoScaleY")] HRESULT AutoScaleY([out, retval] VARIANT_BOOL* pVal);
+	[propput, id(13), helpstring("property AutoScaleY")] HRESULT AutoScaleY([in] VARIANT_BOOL newVal);
+	[id(14), helpstring("method GetXRange")] HRESULT GetXRange([out] DOUBLE* pMin, [out] DOUBLE* pMax);
+	[id(15), helpstring("method GetYRange")] HRESULT GetYRange([out] DOUBLE* pMin, [out] DOUBLE* pMax);
+};
+
+[
+	uuid(05F1EB6C-B494-4AA2-9EEE-434B5B1A3ACE),
+	version(1.0),
+	helpstring("PxLControls 1.0 Type Library")
+]
+library PxLControlsLib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(FD8B757C-5221-4C31-A29F-B6D68AB89A5A),
+		helpstring("_IPxLSubwindowEvents Interface")
+	]
+	dispinterface _IPxLSubwindowEvents
+	{
+		properties:
+		methods:
+		[id(1), helpstring("method SubwindowChanged")] void SubwindowChanged([in] LONG left, [in] LONG top, [in] LONG width, [in] LONG height);
+		[id(2), helpstring("method SubwindowChanging")] void SubwindowChanging([in] LONG left, [in] LONG top, [in] LONG width, [in] LONG height);
+	};
+	[
+		uuid(3964AE07-DDDC-470C-8B43-2AB15DB6627A),
+		helpstring("PxLSubwindow Control")
+	]
+	coclass PxLSubwindow
+	{
+		[default] interface IPxLSubwindow;
+		[default, source] dispinterface _IPxLSubwindowEvents;
+	};
+	[
+		uuid(1A1E63C1-7859-47C6-9159-339A7BE7FCDA),
+		helpstring("_IPxLLookupEvents Interface")
+	]
+	dispinterface _IPxLLookupEvents
+	{
+		properties:
+		methods:
+		[id(1), helpstring("method GraphChanging")] void GraphChanging(void);
+		[id(2), helpstring("method GraphChanged")] void GraphChanged(void);
+	};
+	[
+		uuid(7555A9BA-088F-490D-B355-A90821E33171),
+		helpstring("PxLLookup Class")
+	]
+	coclass PxLLookup
+	{
+		[default] interface IPxLLookup;
+		[default, source] dispinterface _IPxLLookupEvents;
+	};
+	[
+		uuid(1505F715-4138-4366-B73C-347CC2AB1908),
+		helpstring("PxLHistogram Class")
+	]
+	coclass PxLHistogram
+	{
+		[default] interface IPxLHistogram;
+	};
+	[
+		uuid(85F80D1D-7645-4984-9782-344C7653D1E9),
+		helpstring("PxLGraph Class")
+	]
+	coclass PxLGraph
+	{
+		[default] interface IPxLGraph;
+	};
+};

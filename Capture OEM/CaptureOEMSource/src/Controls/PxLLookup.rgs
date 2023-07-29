@@ -1,0 +1,34 @@
+HKCR
+{
+	PxLControls.PxLLookup.1 = s 'PxLLookup Class'
+	{
+		CLSID = s '{7555A9BA-088F-490D-B355-A90821E33171}'
+	}
+	PxLControls.PxLLookup = s 'PxLLookup Class'
+	{
+		CLSID = s '{7555A9BA-088F-490D-B355-A90821E33171}'
+		CurVer = s 'PxLControls.PxLLookup.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {7555A9BA-088F-490D-B355-A90821E33171} = s 'PxLLookup Class'
+		{
+			ProgID = s 'PxLControls.PxLLookup.1'
+			VersionIndependentProgID = s 'PxLControls.PxLLookup'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			val AppID = s '%APPID%'
+			ForceRemove 'Control'
+			ForceRemove 'ToolboxBitmap32' = s '%MODULE%, 104'
+			'MiscStatus' = s '0'
+			{
+			    '1' = s '%OLEMISC%'
+			}
+			'TypeLib' = s '{05F1EB6C-B494-4AA2-9EEE-434B5B1A3ACE}'
+			'Version' = s '1.0'
+		}
+	}
+}

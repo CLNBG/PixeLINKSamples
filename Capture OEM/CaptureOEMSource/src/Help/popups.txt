@@ -1,0 +1,318 @@
+.topic IDH_IMPORTCONFIGFILE
+Load camera settings from a camera configuration file.
+
+.topic IDH_EXPORTCONFIGFILE
+Save camera settings to a camera configuration file.
+
+.topic IDH_APP_EXIT
+Exit the application.
+
+.topic IDH_VIEW_ADVANCEDMODE
+Toggle the application between the simple and advanced modes.
+
+.topic IDH_VIEW_ALWAYSONTOP
+Keep the application on top of other windows.
+
+.topic IDH_VIEW_RESETPREVIEW
+Set the active preview window to the size of the current region of interest.
+
+.topic IDH_VIEW_RESTOREDEFAULTS
+Set the state of the application to the factory defaults.
+
+.topic IDH_VIEW_HISTOGRAM
+Show the histogram window for the active camera.
+
+.topic IDH_APILOG_CLEAR
+Clear the API call log.
+
+.topic IDH_APILOG_FILTER
+Determine which subset of PixeLINK API calls to display in the call log.
+
+.topic IDH_CAMERA_LOADSETTINGS
+Load settings from one of the camera's on-board memory channels.
+
+.topic IDH_CAMERA_SAVESETTINGS
+Save the current settings to one of the camera's on-board memory channels.
+
+.topic IDH_CAMERA_SETNAME
+Store a name in the camera's permanent on-board memory.
+
+.topic IDH_CAMERA_REINITIALIZE
+Uninitialize and then Initialize the active camera.
+
+.topic IDH_HELP_CONTENTS
+Open the help window for the application.
+
+.topic IDH_HELP_ABOUT
+Open the About box for the application.
+
+.topic IDH_APICALL_LOG
+This box displays the function calls that the application is making to the PixeLINK API.
+
+.topic IDH_CAMERA_SELECT
+Select which of the connected PixeLINK cameras the application will control.
+
+.topic IDH_PREVIEW
+Open a window that displays streaming video from the active camera.
+
+.topic IDH_PREVIEW_PAUSE
+Pause the video preview without closing the preview window.
+
+.topic IDH_PREVIEW_PLAY
+Start the video preview.
+
+.topic IDH_PREVIEW_STOP
+Stop the video preview and close the preview window.
+
+.topic IDH_EXPOSURE
+Control the Exposure Time (aka Shutter Speed, aka Integration Time).
+
+.topic IDH_EXPOSURE_EDIT
+Type in a new value for Exposure.
+
+.topic IDH_EXPOSURE_AUTO
+Request that the camera set the Exposure automatically. Known in DCAM as "One-Push".
+
+.topic IDH_GAIN
+Control the Gain applied to the image data.
+
+.topic IDH_GAIN_EDIT
+Type in a new value for the Gain.
+
+.topic IDH_GAIN_AUTO
+Request that the camera set the Gain automatically. Known in DCAM as "One-Push".
+
+.topic IDH_STANDARD_SIZES
+Set the Region of Interest to one the listed, predefined sizes.
+
+.topic IDH_DECIMATION
+Control the Decimation.
+
+.topic IDH_IMAGE_FILE
+Choose a location to save captured images to.
+
+.topic IDH_IMAGE_FORMAT
+Choose a file format to save captured images in.
+
+.topic IDH_IMAGE_CAPTURE
+Capture an image to file.
+
+.topic IDH_CLIP_NUMFRAMES
+Enter the number of frame to capture in a video clip.
+
+.topic IDH_CLIP_FILE
+Choose a location to save captured video clips to.
+
+.topic IDH_CLIP_FORMAT
+Choose a file format to save captured video clips in.
+
+.topic IDH_CLIP_CAPTURE
+Capture a video clip to file.
+
+.topic IDH_BRIGHTNESS
+Control the Brightness.
+
+.topic IDH_BRIGHTNESS_EDIT
+Type in a new value for the Brightness.
+
+.topic IDH_BRIGHTNESS_AUTO
+Request that the camera set the Brightness automatically. Know in DCAM as "One-Push".
+
+.topic IDH_LOOKUP_ENABLE
+Turn the Lookup table feature on or off.
+
+.topic IDH_LOOKUP_AUTOUPDATE
+When checked, the camera is updated with the new lookup table as soon as the graph is changed.
+When unchecked, the camera is only updated when the "Update Camera" button is clicked.
+
+.topic IDH_LOOKUP_UPDATENOW
+Update the camera with the lookup table data
+
+.topic IDH_LOOKUP_IMPORT
+Import lookup table data from an Excel file.
+
+.topic IDH_LOOKUP_LIST
+Displays the exact mapping of pixel values that will be loaded into the camera.
+
+.topic IDH_LOOKUP_GRAPH
+Drag points to create a lookup table visually. Ctrl-drag to copy a point. 
+Right-click on a line or point for more options.
+
+.topic IDH_ROI_APPLYTO_STREAM
+When selected, the controls on this page apply to the video data streamed from the camera.
+
+.topic IDH_ROI_APPLYTO_AUTO
+When selected, the controls on this page determine the region that will be considered by 
+the camera when setting feature values automatically.
+
+.topic IDH_WINDOWLAYOUT
+Use these controls to choose the size and location of the Region of Interest 
+(ROI). The ROI defines the portion of the available video data that will be 
+sent from the camera to your computer.
+
+.topic IDH_WINDOWLAYOUT_HEIGHT
+Set the height, in pixels, of the Region of Interest.
+
+.topic IDH_WINDOWLAYOUT_LEFT
+Set the distance, in pixels, from the left edge of the full frame to the left
+edge of the Region of Interest.
+
+.topic IDH_WINDOWLAYOUT_TOP
+Set the distance, in pixels, from the top edge of the full frame to the top
+edge of the Region of Interest.
+
+.topic IDH_WINDOWLAYOUT_WIDTH
+Set the width, in pixels, of the Region of Interest.
+
+.topic IDH_ROI_CENTER
+Center the Region of Interest.
+
+.topic IDH_INCREMENTFILENAME
+Select this option if you want to capture a series of sequentially numbered files.
+
+.topic IDH_IMAGE_PREVIEWAFTERCAPTURE
+After capture, open the image file in the registered viewer for the file type.
+
+.topic IDH_IMAGE_CAPTUREFULLFRAME
+Capture a full-frame image, regardless of the current Region of Interest.
+
+.topic IDH_TIMELAPSE_CAPTURE
+Capture a series of images at regular intervals.
+
+.topic IDH_TIMELAPSE_PARAMS
+Enter the frequency and duration for time lapse capture.
+
+.topic IDH_TIMELAPSE_AUTOEXPOSE
+If selected, Exposure will be set automatically before capturing each image.
+
+.topic IDH_CLIP_CAPTUREFULLFRAME
+Capture the clip at full frame size, regardless of the current Region of Interest.
+
+.topic IDH_CLIP_SAVERAW
+Select to save the raw video data as a .pds (PixeLINK Data Stream) file.
+
+.topic IDH_CLIP_RAWFILE
+Choose the location to save the raw data file to.
+
+.topic IDH_CLIP_RAWINCREMENT
+Select this option if you want to capture a series of sequentially numbered files.
+
+.topic IDH_CLIP_SAVEFORMATTED
+Select to save a formatted video clip.
+
+.topic IDH_CLIP_INCREMENT
+Select this option if you want to capture a series of sequentially numbered files.
+
+.topic IDH_CLIP_VIEWAFTERCAPTURE
+After capture, open the clip file in the registered viewer for the file type.
+
+.topic IDH_PIXELFORMAT
+Select the format for the data streamed from the camera.
+
+.topic IDH_TEMPERATURE
+Displays the camera's internal temperature.
+
+.topic IDH_IMAGEFLIP
+Select to have the image data inverted, either horizontally or vertically.
+
+.topic IDH_FEATURE_SLIDER
+Displays or sets the value of the indicated DCAM feature.
+
+.topic IDH_FEATURE_EDIT
+Type in a number to set the value of the indicated DCAM feature.
+
+.topic IDH_FEATURE_AUTO
+Request that the camera automatically set the value of the indicated DCAM feature.
+
+.topic IDH_CAMERA_TREE
+Displays the descriptors defined for the active camera. 
+Select a node to set the "In-Focus" descriptor.
+
+.topic IDH_DESCRIPTOR_CREATE
+Create a new descriptor, initially in the mode shown in the "Update Mode" radio buttons.
+
+.topic IDH_DESCRIPTOR_DELETE
+Delete the active descriptor.
+
+.topic IDH_DESCRIPTOR_DELETEALL
+Delete all descriptors from the active camera.
+
+.topic IDH_DESCRIPTOR_UPDATEMODE
+Select the mode to create new descriptors in. 
+When changed, also sets the mode of the active descriptor.
+
+.topic IDH_DESCRIPTOR_UPDATECAMERA
+Camera mode - all changes will be sent to the camera immediately.
+
+.topic IDH_DESCRIPTOR_UPDATEHOST
+Host mode - changes will be buffered, and will not be sent to the camera until 
+the descriptor's mode is set to "Camera".
+
+.topic IDH_DESCRIPTOR_UPDATENOW
+Send buffered changes in the current descriptor to the camera, then return to Host mode.
+
+.topic IDH_DESCRIPTOR_FEATURE
+View or change the value of the indicated DCAM feature in the active descriptor.
+
+.topic IDH_TRIGGER_ONOFF
+Turn the Trigger feature on or off.
+
+.topic IDH_TRIGGER_MODE
+Displays or sets the Trigger mode.
+
+.topic IDH_TRIGGER_TYPE
+Displays or sets the Trigger type.
+
+.topic IDH_TRIGGER_POLARITY
+Displays or sets the Trigger polarity.
+
+.topic IDH_TRIGGER_DELAY
+Displays or sets the Trigger delay.
+
+.topic IDH_TRIGGER_PARAMETER
+Displays or sets the Trigger parameter. The meaning of the parameter depends on the selected Mode.
+
+.topic IDH_TRIGGER_UPDATE
+Update the camera's Trigger feature with the displayed parameters.
+
+.topic IDH_TRIGGER_DESCRIPTION
+Displays a brief description of the selected Trigger mode.
+
+.topic IDH_GPO_NUMBER
+Determines which of the camera's GPOs is being controlled or displayed.
+
+.topic IDH_GPO_ONOFF
+Turn the specified GPO on or off.
+
+.topic IDH_GPO_MODE
+Displays or sets the mode of the specified GPO.
+
+.topic IDH_GPO_POLARITY
+Displays or sets the polarity of the specified GPO.
+
+.topic IDH_GPO_PARAMETER
+Displays or sets a parameter of the specified GPO. The meaning of the parameters depends on the mode.
+
+.topic IDH_GPO_UPDATE
+Update the specified GPO with the displayed parameters.
+
+.topic IDH_GPO_DESCRIPTION
+Displays a brief description of the selected GPO mode.
+
+.topic IDH_CALLBACK
+Choose a callback function to be applied to the video data.
+
+.topic IDH_CALLBACK_FILE
+If required by the selected callback, choose a supporting file.
+For example, the "Bitmap Overlay" callback requires a .bmp file.
+
+.topic IDH_KNEE_CHECK
+Turn this Knee Point on or off.
+
+.topic IDH_KNEE
+Displays or sets the value of the knee point.
+
+.topic IDH_TODO
+TODO - Write help text for this control.
+
+

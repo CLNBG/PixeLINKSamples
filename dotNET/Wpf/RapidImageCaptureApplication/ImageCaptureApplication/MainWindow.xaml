@@ -1,0 +1,89 @@
+﻿<Window x:Class="RapidImageCaptureApplication.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RapidImageCaptureApplication"
+        mc:Ignorable="d"
+        Title="Image Capture Application" Height="383.611" Width="388.6"
+        DataContext="{Binding RelativeSource={RelativeSource Self}}" 
+        ResizeMode="CanMinimize"
+        Closing="Window_Closing"
+        Background="#FF333333">
+    <Grid Margin="0,0,3,0.4">
+
+        <!--<Label x:Name="label" Content="Frame Rate (fps):" HorizontalAlignment="Left" Margin="9,71,0,0" VerticalAlignment="Top" Width="197"/>
+
+        <TextBox x:Name="sliderTextBox" IsEnabled="{Binding IsEnabled, ElementName=exposureSlider}" Text="{Binding Value, ElementName=exposureSlider, UpdateSourceTrigger=PropertyChanged}" Margin="211,36,90,388.6"  />
+        <Slider TickPlacement="BottomRight" TickFrequency="200" IsSnapToTickEnabled="False" x:Name="exposureSlider" Margin="10,36,172,380.6" ValueChanged="exposureSlider_ValueChanged"/>
+        <TextBox x:Name="framesPerSecondTextBox" IsEnabled="{Binding IsEnabled,ElementName=framesPerSecondSlider}" Text="{Binding Value, ElementName=framesPerSecondSlider, UpdateSourceTrigger=PropertyChanged}" Margin="210,96,91,328.6"  />
+        <Slider TickPlacement="BottomRight" TickFrequency="10" IsSnapToTickEnabled="False" x:Name="framesPerSecondSlider" Margin="9,97,173,320.6" Value="{Binding FrameRate}" ValueChanged="framesPerSecondSlider_ValueChanged"/>
+<Label x:Name="exposureLabel" Content="Exposure Time (s):" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="197"/>
+        <CheckBox x:Name="manualFrameRateCheckBox" IsEnabled="{Binding IsEnabled,ElementName=exposureSlider}" Content="[ON]" HorizontalAlignment="Left" Margin="122,76,0,0" VerticalAlignment="Top" Checked="manualFrameRateCheckBox_Checked" Unchecked="manualFrameRateCheckBox_UnChecked"/>-->
+
+        <Button x:Name="startTestBtn" IsEnabled="{Binding EnableStartButton}" Content="Start Test" HorizontalAlignment="Left" Margin="12,158,0,0" VerticalAlignment="Top" Width="150" Height="40" Click="startTestBtn_Click"/>
+        <Button x:Name="endTestBtn" IsEnabled="{Binding EnableStopButton}" Content="End Test" HorizontalAlignment="Left" Margin="203,158,0,0" VerticalAlignment="Top" Width="150" Height="40" Click="endTestBtn_Click"/>
+        <Separator HorizontalAlignment="Left" Height="20" Margin="12,203,0,0" VerticalAlignment="Top" Width="341"/>
+        <Label x:Name="elapsedTimeDisplay"  Content="{Binding ElapsedTime}" HorizontalAlignment="Left" Margin="97,229,0,0" VerticalAlignment="Top" Width="256" Height="26"/>
+        <Label x:Name="expectedFrameCountLabel" Content="Expected Image Count:" HorizontalAlignment="Left" Margin="12,260,0,0" VerticalAlignment="Top" Width="136"/>
+        <Label x:Name="lostFramesLabel" Content="Lost Images:" HorizontalAlignment="Left" Margin="13,289,0,0" VerticalAlignment="Top" Width="75"/>
+        <Label x:Name="elapsedTimeLabel" Content="Elapsed Time:" HorizontalAlignment="Left" Margin="12,229,0,0" VerticalAlignment="Top" Width="85"/>
+        <Label x:Name="expectedFrameCountDisplay"  Content="{Binding ExpectedFrameCount}" HorizontalAlignment="Left" Margin="153,260,0,0" VerticalAlignment="Top" Width="200" Height="26"/>
+        <Label x:Name="lostFramesDisplay"  Content="{Binding LostFrames}" HorizontalAlignment="Left" Margin="93,289,0,0" VerticalAlignment="Top" Width="261" Height="26"/>
+
+        <Label x:Name="actualFrameRateLabel" Content="Actual Frame Rate:" HorizontalAlignment="Left" Margin="13,315,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label x:Name="ActualFrameRateDisplay"  Content="{Binding ActualFrameRate}" HorizontalAlignment="Left" Margin="133,315,0,0" VerticalAlignment="Top" Height="23" Width="220"/>
+        <Label x:Name="attachedCameraLabel" Content="Attached Camera:" HorizontalAlignment="Left" Margin="13,10,0,0" VerticalAlignment="Top" Width="111"/>
+        <Label x:Name="cameraNameDisplay" Content="{Binding CameraName}" HorizontalAlignment="Left" Margin="124,10,0,0" VerticalAlignment="Top" Width="230"/>
+        <TextBox x:Name="DirectoryTextBox" Text="{Binding DirectoryPath}" HorizontalAlignment="Left" Height="23" Margin="13,63,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="248" IsEnabled="False"/>
+        <Button x:Name="BrowseButton" Content="Browse" HorizontalAlignment="Left" Margin="266,63,0,0" VerticalAlignment="Top" Width="87" Height="23" Click="BrowseButton_Click"/>
+        <Label x:Name="DirectoryLabel" Content="Directory:" HorizontalAlignment="Left" Margin="13,34,0,0" VerticalAlignment="Top" Width="111"/>
+        <Label x:Name="DirectoryLabel_Copy" Content="Captured Image Name:" HorizontalAlignment="Left" Margin="13,91,0,0" VerticalAlignment="Top" Width="135"/>
+        <TextBox x:Name="ImageNameTextBox" HorizontalAlignment="Left" Height="23" Margin="13,120,0,0" TextWrapping="Wrap" Text="{Binding ImageName}" VerticalAlignment="Top" Width="149"/>
+
+
+
+    </Grid>
+
+    <!--UI Colour Scheme-->
+    <Window.Resources>
+        <SolidColorBrush x:Key="WindowBrush" Color="#FF333333"/>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="FontFamily" Value="#Trebuchet MS"/>
+            <Setter Property="Background" Value="#FF333333"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="White" BorderThickness="1">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="DodgerBlue"/>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Background" Value="LightGray"/>
+                    <Setter Property="Foreground" Value="Gray"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="{x:Type Label}">
+            <Setter Property="FontFamily" Value="#Trebuchet MS"/>
+            <Setter Property="Background" Value="#FF333333"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+        <Style TargetType="{x:Type Border}">
+            <Setter Property="BorderBrush" Value="White"/>
+        </Style>
+        <Style TargetType="{x:Type Window}">
+            <Setter Property="FontFamily" Value="#Trebuchet MS"/>
+            <Setter Property="Background" Value="#FF333333"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+    </Window.Resources>
+
+</Window>

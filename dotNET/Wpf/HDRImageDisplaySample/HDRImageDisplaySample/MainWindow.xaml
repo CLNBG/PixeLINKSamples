@@ -1,0 +1,104 @@
+﻿<Window x:Class="HDRImageDisplaySample.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HDRImageDisplaySample"
+        mc:Ignorable="d"
+        Title="HDRImageDisplaySample" Height="350" Width="550"
+        KeyDown="ExitFullScreen"
+        Background="#FF333333"
+        SizeChanged="Window_SizeChanged" ResizeMode="NoResize"
+    >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Name="TopPaddingRow" Height="1*"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Button Name="FullScreenButton" Grid.Column="0" Grid.Row="0" Width="75" Height="25" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5" Content="Full Screen" Click="EnterFullScreen_Button"></Button>
+
+        <!--Exposure time-->
+        <Label x:Name="ExposureTimeInfo" Content="Expsoure time" HorizontalAlignment="Left" Margin="20,40,0,0" VerticalAlignment="Top" Width="90"></Label>
+        <TextBox x:Name="ExposureTimeBox" HorizontalAlignment="Left" Height="23" Margin="25,65,0,0" TextWrapping="Wrap" Text="30" VerticalAlignment="Top" Width="50"></TextBox>
+        <Button x:Name="ExposureTimeButton" Content="Set Exposure" HorizontalAlignment="Left" Margin="25,95,0,0" VerticalAlignment="Top" Width="100" Click="ExposureTimeButton_Click" Height="25"></Button>
+        <Label x:Name="ExposureTimeLabel" Content="(milliseconds)" HorizontalAlignment="Left" Margin="80,65,0,0" VerticalAlignment="Top" Width="90"></Label>
+
+        <!--Pseudo-static image refresh period-->
+        <Label x:Name="RefreshPeriodInfo" Content="Pseudo-static image refresh period from 5s up to 25s." HorizontalAlignment="Left" Margin="190,40,0,0" VerticalAlignment="Top" Width="310"></Label>
+        <TextBox x:Name="RefreshPeriodBox" HorizontalAlignment="Left" Height="23" Margin="195,65,0,0" TextWrapping="Wrap" Text="15" VerticalAlignment="Top" Width="50"></TextBox>
+        <Button x:Name="RefreshPeriodButton" Content="Set Refresh Period" HorizontalAlignment="Left" Margin="195,95,0,0" VerticalAlignment="Top" Width="110" Click="RefreshPeriodButton_Click" Height="25"></Button>
+        <Label x:Name="RefreshPeriodLabel" Content="(Seconds)" HorizontalAlignment="Left" Margin="255,65,0,0" VerticalAlignment="Top" Width="90"></Label>
+
+        <Grid Grid.Row="1">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Name="ImageGainZeroColumn" Width="1*"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Name="ImageGainHdrColumn" Width="1*"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Name="ImageGainTwelveColumn" Width="1*"/>
+                <ColumnDefinition Width="10"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Label Content="Low Brightness" Grid.Column="1" Foreground="White" FontSize="20" FontWeight="DemiBold" HorizontalAlignment="Center"></Label>
+            <Label Content="High Dynamic Range" Grid.Column="3" Foreground="White" FontSize="20" FontWeight="DemiBold" HorizontalAlignment="Center"></Label>
+            <Label Content="High Brightness" Grid.Column="5" Foreground="White" FontSize="20" FontWeight="DemiBold" HorizontalAlignment="Center"></Label>
+
+            <Image Name="imageGainZero" Margin="5" Grid.Column="1" HorizontalAlignment="Stretch" Grid.Row="1"/>
+            <Image Name="imageGainHDR" Margin="5" Grid.Column="3" HorizontalAlignment="Stretch" Grid.Row="1"/>
+            <Image Name="imageGainTwelve" Margin="5" Grid.Column="5" HorizontalAlignment="Stretch" Grid.Row="1"/>
+
+        </Grid>
+    </Grid>
+
+    <!--UI Colour Scheme-->
+    <Window.Resources>
+        <SolidColorBrush x:Key="WindowBrush" Color="#FF333333"/>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="FontFamily" Value="#Trebuchet MS"/>
+            <Setter Property="Background" Value="#FF333333"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="White" BorderThickness="1">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="DodgerBlue"/>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Background" Value="LightGray"/>
+                    <Setter Property="Foreground" Value="Gray"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="{x:Type Label}">
+            <Setter Property="FontFamily" Value="#Trebuchet MS"/>
+            <Setter Property="Background" Value="#FF333333"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+        <Style TargetType="{x:Type Border}">
+            <Setter Property="BorderBrush" Value="White"/>
+        </Style>
+        <Style TargetType="{x:Type Window}">
+            <Setter Property="FontFamily" Value="#Trebuchet MS"/>
+            <Setter Property="Background" Value="#FF333333"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+    </Window.Resources>
+
+</Window>
