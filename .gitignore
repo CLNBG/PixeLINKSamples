@@ -371,6 +371,7 @@ refs/
 **.vcxproj
 **.vcxproj.filters
 **.vcxproj.user
+**.vcxproj
 **.sln
 **.csproj
 **.pds
