@@ -3,8 +3,8 @@ project "GPInput"
     language "C++"
     cppdialect "C++17"
 
-    targetdir ("../bin/" .. outputdir .. "/%{prj.name}")
-    objdir ("../bin-int/" .. outputdir .. "/%{prj.name}")
+    targetdir ("../../bin/" .. outputdir .. "/%{prj.name}")
+    objdir ("../../bin-int/" .. outputdir .. "/%{prj.name}")
     
     files
     {
@@ -19,7 +19,7 @@ project "GPInput"
 
     libdirs
     {
-        "%{wks.location}/NMROSCore/vendor/Camera/libs/PIXELINK/lib/x64",
+        "%{wks.location}/NMROSCore/vendor/Camera/libs/PIXELINK/lib/Win64_x64",
     }
       
     links

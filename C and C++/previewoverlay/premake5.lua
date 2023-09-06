@@ -20,7 +20,7 @@ project "previewoverlay"
 
     libdirs
     {
-        "%{wks.location}/NMROSCore/vendor/Camera/libs/PIXELINK/lib/x64",
+        "%{wks.location}/NMROSCore/vendor/Camera/libs/PIXELINK/lib/Win64_x64",
     }
       
     links
